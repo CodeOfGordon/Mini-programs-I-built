@@ -1,11 +1,3 @@
-# Name: Gordon
-# Date: March 24, 2021
-# File Name: d1q4_timeGround.py
-# Description: Calculates the time an object takes to hit the ground from a
-#certain height
-# Test cases: Input             Expected Output                     Pass/Fail
-#           10,1                    2.14  
-
 #Process - Function determines the time it took to hit the ground
 #Formula is -4.9t^2 + vt + h = 0
 def find_time(v, h):
