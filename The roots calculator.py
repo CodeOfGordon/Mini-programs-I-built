@@ -14,8 +14,6 @@ def roots(a,b,c):
     return positiveSqrt, negativeSqrt
 
 #Input & Output - Main program outputs the roots
-print("This program will calculate the roots from the quadratic formula \n\
-*Should you insist on exiting this exquisite program, please type 'booby'*")
 while end == False:
     try:
         #Receives variables and prints the roots.
@@ -30,4 +28,4 @@ while end == False:
         print("*"*40)
         print("The roots don't exist for this combination!\n\
 Either that or you typed in the wrong thing...")
-        end == False
+        end = False
