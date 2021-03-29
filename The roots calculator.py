@@ -29,3 +29,6 @@ while end == False:
         print("The roots don't exist for this combination!\n\
 Either that or you typed in the wrong thing...")
         end = False
+'''
+DOES NOT CURRENTLY WORK
+'''
