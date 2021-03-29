@@ -1,6 +1,5 @@
 #Initialize variables
 import math
-end = False
 
 #Process - Function calculates the quadratic formula
 def roots(a,b,c):
@@ -14,21 +13,38 @@ def roots(a,b,c):
     return positiveSqrt, negativeSqrt
 
 #Input & Output - Main program outputs the roots
+<<<<<<< Updated upstream
 while end == False:
+=======
+print("This program will calculate the roots, please type 'done' when done")
+while True:
+    A = input("Enter the 'a' variable: ")
+    B = input("Enter the 'b' variable: ")
+    C = input("Enter the 'c' variable: ")
+    #If the keyword 'done' is detected, then the program stops.
+    if A == "done" or B == "done" or C == "done":
+        print("Keyword detected\nEnding program...")
+        break
+    
+    #Converts variables to floating value and prints the roots.
+>>>>>>> Stashed changes
     try:
-        #Receives variables and prints the roots.
-        a = float(input("Enter the 'a' variable: "))
-        b = float(input("Enter the 'b' variable: "))
-        c = float(input("Enter the 'c' variable: "))
+        a = float(A)
+        b = float(B)
+        c = float(C)
         posSqrt, negSqrt = roots(a,b,c)
         print(f"The roots are {posSqrt:.2f} and {negSqrt:.2f}")
-        end = True
-          
+        break
+    
     except:
         print("*"*40)
         print("The roots don't exist for this combination!\n\
 Either that or you typed in the wrong thing...")
+<<<<<<< Updated upstream
         end = False
 '''
 DOES NOT CURRENTLY WORK
 '''
+=======
+        continue
+>>>>>>> Stashed changes
