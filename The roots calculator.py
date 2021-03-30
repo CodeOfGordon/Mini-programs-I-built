@@ -13,9 +13,6 @@ def roots(a,b,c):
     return positiveSqrt, negativeSqrt
 
 #Input & Output - Main program outputs the roots
-<<<<<<< Updated upstream
-while end == False:
-=======
 print("This program will calculate the roots, please type 'done' when done")
 while True:
     A = input("Enter the 'a' variable: ")
@@ -27,7 +24,6 @@ while True:
         break
     
     #Converts variables to floating value and prints the roots.
->>>>>>> Stashed changes
     try:
         a = float(A)
         b = float(B)
@@ -40,11 +36,4 @@ while True:
         print("*"*40)
         print("The roots don't exist for this combination!\n\
 Either that or you typed in the wrong thing...")
-<<<<<<< Updated upstream
-        end = False
-'''
-DOES NOT CURRENTLY WORK
-'''
-=======
         continue
->>>>>>> Stashed changes
