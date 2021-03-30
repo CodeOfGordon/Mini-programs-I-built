@@ -1,6 +1,7 @@
 '''
 This program allows the user to enter any integer, before calculating the sum of the first n and first n odd integers, and finally printing the result.
 The program additionally forces the user to enter a positive integer, and also allows a replay option.
+'''
 
 #Initiliaze variables.
 end = False
