@@ -3,7 +3,6 @@ This program allows the user to enter any integer, before calculating the sum of
 The program additionally forces the user to enter a positive integer, and also allows a replay option.
 
 #Initiliaze variables.
-sum = 0
 end = False
 
 #Function receives n integer.
@@ -11,7 +10,7 @@ def intput():
     while True:
         try:
             integer = int(input("Enter a positive integer: "))
-            #If the integer is below zero, the loop reset.
+            #If the integer is below zero, the loop resets.
             if integer < 0:
                 print("That's not a positive integer!")
             else:
