@@ -13,8 +13,7 @@ guessNum = random.randint(1,10)
 #guessNum, if it's incorrect it will reprompt the user.
 while guess != guessNum:
     try:
-        guess = int(input("Guess a number between 1 and 10(inclusive). \
-If you want to stop, type '-1': "))
+        guess = int(input("Guess a number between 1 and 10(inclusive). If you want to stop, type '-1': "))
         #Ends the program.
         if guess == -1:
             break
@@ -28,5 +27,4 @@ If you want to stop, type '-1': "))
 
 #Output - Prints if the guess was correct
 if guess == guessNum:
-    print(f"Congratulations! You guessed the right number! It only took you \
-{guessCount} tries!")
+    print(f"Congratulations! You guessed the right number! It only took you {guessCount} tries!")
