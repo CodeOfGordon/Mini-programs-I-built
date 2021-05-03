@@ -30,10 +30,12 @@ def hangman():
     randWord = random.choice(randWords)
     #Sets the count of guesses.
     count = 10
+    #Creates a list for letters already guessed.
     guessedLetters = []
+    #Creates a variable for use in determining already guessed letters.
     notGuessed = False
 
-    #Makes the dashes into a list.
+    #Makes the dashes into a list, according to the no. of letters in randWord.
     dashes = list(len(randWord) * "_")
     #join funct. removes spaces in list, while adding whatever is inside the quotations.
     print(" ".join(dashes))
@@ -67,9 +69,9 @@ def hangman():
                     #If value(letter in randWord) at time is equal to the guessed letter.
                     if value == randGuess:
                         print("Congrats, you guessed the correct letter!")
-                        #dashes[index] = randGuess replaces the dashes with the guessed letter(s)
+                        #dashes[index] = randGuess replaces the dashes with the guessed letter.
                         dashes[index] = randGuess
-                        #Adds randguess to a list of already guessed letters.
+                        #Adds randGuess to a list of already guessed letters.
                         guessedLetters.append(randGuess)
                         ##Resets the notGuessed variable.
                         notGuessed = False
@@ -78,7 +80,7 @@ def hangman():
                         
                 #If guess is incorrect.
                 if randGuess not in randWord:
-                    #Adds randguess to a list of already guessed letters.
+                    #Adds randGuess to a list of already guessed letters.
                     guessedLetters.append(randGuess)
                     ##Resets the notGuessed variable.
                     notGuessed = False
@@ -86,10 +88,12 @@ def hangman():
                     count -= 1
                     print(f"WRONG, you now have {count} guesses!")
 
-            #If user has completed the word. Space between quotations are removed here since ver. before were used to display hangman word.
+            #If user has completed the word. Space between quotations are removed here since " ".join(dashes) included spaces inbetween letters.
+            #In this scenario, it needs to match randWord, which doesn't have spaces.
             if "".join(dashes) == randWord:
                 print("Congrats, you guessed the word!\nEnding program...")
                 break
+            #If no. of guesses reach 0.
             elif count <= 0:
                 print(f"You have run out of guesses! The word was {randWord}")
                 print("Ending program...")
