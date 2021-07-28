@@ -23,21 +23,22 @@ word and ending the program.
 #Function displays hangman.
 def hangman():
     print("This program works as a hangman game, with 10 guessses allowed")
-
-    #Sets the random word.
+    
+    import time
+    # Sets the random word.
     import random
     randWords = ["DOG","ORANGUTAN","GIRAFFE","LEOPARD"]
     randWord = random.choice(randWords)
-    #Sets the count of guesses.
+    # Sets the count of guesses.
     count = 10
-    #Creates a list for letters already guessed.
+    # Creates a list for letters already guessed.
     guessedLetters = []
-    #Creates a variable for use in determining already guessed letters.
+    # Creates a variable for use in determining already guessed letters.
     notGuessed = False
 
-    #Makes the dashes into a list, according to the no. of letters in randWord.
+    # Makes the dashes into a list, according to the no. of letters in randWord.
     dashes = list(len(randWord) * "_")
-    #join funct. removes spaces in list, while adding whatever is inside the quotations.
+    # join funct. removes spaces in list, while adding whatever is inside the quotations.
     print(" ".join(dashes))
 
     '''Main Function's program'''
@@ -45,40 +46,41 @@ def hangman():
     while True:
         try:
             
-            #Receives input & capitalizes it.
+            # Receives input & capitalizes it.
             randGuess = input("Guess a letter: ").upper()
-            #Makes randGuess an error/exception if its length is more than 1. Since letters have 1 letter.
+            # Makes randGuess an error/exception if its length is more than 1. Since letters have 1 letter.
             if len(randGuess) > 1:
                 raise randGuess
 
-            #If guess has not already been guessed.
+            # If guess has not already been guessed.
             if randGuess not in guessedLetters:
                 notGuessed = True
-            #If guess has already been guessed.
+            # If guess has already been guessed.
             else:
                 print("This letter has already been guessed!")
 
-            #If guess hasn't already been repeated:
+            # If guess hasn't already been repeated:
             if notGuessed == True:
-                #Enumerate funct. assigns index to string, but doesn't convert it to a list.
-                #Also here, index & value are being made as variables in for loop.
-                #Code essentially searches randWord as if it was a list.
+                # Enumerate funct. assigns index to string, but doesn't convert it to a list.
+                # Also here, index & value are being made as variables in for loop.
+                # Code essentially searches randWord as if it was a list.
                 for index,value in enumerate(randWord):
 
-                    #If guess is correct:
-                    #If value(letter in randWord) at time is equal to the guessed letter.
+                    # If guess is correct:
+                    # If value(letter in randWord) at time is equal to the guessed letter.
                     if value == randGuess:
                         print("Congrats, you guessed the correct letter!")
-                        #dashes[index] = randGuess replaces the dashes with the guessed letter.
+                        # dashes[index] = randGuess replaces the dashes with the guessed letter.
                         dashes[index] = randGuess
-                        #Adds randGuess to a list of already guessed letters.
+                        # Adds randGuess to a list of already guessed letters.
                         guessedLetters.append(randGuess)
-                        ##Resets the notGuessed variable.
+                        ## Resets the notGuessed variable.
                         notGuessed = False
-                #Reprints the dashes.
+                        
+                # Reprints the dashes.
                 print(" ".join(dashes))
                         
-                #If guess is incorrect.
+                # If guess is incorrect.
                 if randGuess not in randWord:
                     #Adds randGuess to a list of already guessed letters.
                     guessedLetters.append(randGuess)
@@ -88,15 +90,22 @@ def hangman():
                     count -= 1
                     print(f"WRONG, you now have {count} guesses!")
 
-            #If user has completed the word. Space between quotations are removed here since " ".join(dashes) included spaces inbetween letters.
-            #In this scenario, it needs to match randWord, which doesn't have spaces.
+
+            # If user has completed the word. Space between quotations are removed here since " ".join(dashes) included spaces inbetween letters.
+            # In this scenario, it needs to match randWord, which doesn't have spaces.
             if "".join(dashes) == randWord:
-                print("Congrats, you guessed the word!\nEnding program...")
+                print("Congrats, you guessed the word!")
+                time.sleep(1) # Delays time for better UI.
+                print("Ending program...")
+                time.sleep(2)
                 break
-            #If no. of guesses reach 0.
+            
+            # If no. of guesses reach 0.
             elif count <= 0:
                 print(f"You have run out of guesses! The word was {randWord}")
+                time.sleep(1)
                 print("Ending program...")
+                time.sleep(2)
                 break
                 
         except:
