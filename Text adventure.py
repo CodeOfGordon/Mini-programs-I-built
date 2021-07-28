@@ -16,9 +16,9 @@ PHASE 3
 end up at treasure guarded by troll
 '''
 
-#Function brings up goblin encounter, found in middle tunnel.
+# Function brings up goblin encounter, found in middle tunnel. ----------
 def goblinEncounter():
-    #--Character stats--
+    # --Character stats--
     global hp_char
     global dmg_char
     global heavy_dmg_char
@@ -29,6 +29,7 @@ def goblinEncounter():
 
     global end
     import random
+    from time import sleep
     
     print("You encounter a goblin!")
     while True:
@@ -38,7 +39,7 @@ def goblinEncounter():
         print("")
         print(f"You - HP {hp_char}")
 
-        #Attack
+        # Attack
         print("\n\
     a - Normal attack \n\
         -Does 2 DMG \n\
@@ -50,79 +51,84 @@ def goblinEncounter():
 
         choice = input("")
         
-        #Normal Damage
+        # Normal Damage
         if choice == 'a':
             dice = random.randint(1,7)
-            if dice != 6:
+            if not(dice == 6):
               print("Direct hit!")
               hp_goblin -= dmg_char
             else:
                 print("You slip on an ant and miss!")
-        #Heavy Damage
+        # Heavy Damage
         elif choice == 'b':
             dice = random.randint(1,7)
-            if dice != 1 or 3 or 5:
+            if not(dice % 2 == 1):
               print("Direct hit!")
               hp_goblin -= heavy_dmg_char
             else:
                 print("You slip on an ant and miss!")
-        #Run
+        # Run
         elif choice == 'c':
             print("You try to run but you run into a wall!")
 
-        #Fight ends check
+        # Fight ends check
         if hp_goblin <= 0:
             print("You slaughtered a goblin in its home, congrats!")
             break
         elif hp_char <= 0:
             print("You succumb to the goblin...")
+            time.sleep(2)
             end = True
             break
 
         print("")
-#GOBLIN'S TURN
+# GOBLIN'S TURN
         print("The goblin strikes!")
         hp_char -= dmg_goblin
 
-        #Fight ends check
+        # Fight ends check
         if hp_goblin <= 0:
             print("You slaughtered a goblin in its home, congrats!")
             break
         elif hp_char <= 0:
             print("You succumb to the goblin...")
+            time.sleep(2)
             end = True
             break
 
-#Function brings up a trap encounter, found in last tunnel
+
+# Function brings up a trap encounter, found in last tunnel ----------
 def trapEncounter():
     global hp_char
     print("A giant log suddenly swings at you! You lost half of your HP!")
     hp_char -= 5
-    
-#Function brings up a troll encounter, found in last phase
+
+
+# Function brings up a troll encounter, found in last phase ----------
 def trollEncounter():
-    #--Character stats--
+    # --Character stats--
     global hp_char
     global dmg_char
     global heavy_dmg_char
 
-    #Troll stats
+    # Troll stats
     global hp_troll
     global dmg_troll
 
     global end
     import random
+    from time import sleep
 
 
     print("You encounter the final boss, the troll!")
     while True:
         print("What will you do?")
-        #Stats
+        # Stats
         print(f"Troll - HP {hp_troll}")
         print("")
         print(f"You - HP {hp_char}")
 
-        #Attack
+        # Attack
         print("\n\
     a - Normal attack \n\
         -Does 2 DMG \n\
@@ -134,41 +140,42 @@ def trollEncounter():
 
         choice = input("")
             
-        #Normal Damage
+        # Normal Damage
         if choice == 'a':
             dice = random.randint(1,7)
-            if dice != 6:
+            if not(dice == 6):
               print("Direct hit!")
               hp_troll -= dmg_char
             else:
                 print("You slip on an ant and miss!")
-        #Heavy Damage
+        # Heavy Damage
         elif choice == 'b':
             dice = random.randint(1,7)
-            if dice != 1 or 3 or 5:
+            if not(dice % 2 == 1):
               print("Direct hit!")
               hp_troll -= heavy_dmg_char
             else:
                 print("You slip on an ant and miss!")
-        #Run
+        # Run
         elif choice == 'c':
             print("You try to run but you run into a wall!")
 
-        #Fight ends check
+        # Fight ends check
         if hp_troll <= 0:
             print("You slaughtered a troll in its home, congrats!")
             break
         elif hp_char <= 0:
             print("You succumb to the troll...")
+            time.sleep(2)
             end = True
             break
 
         print("")
-#TROLL'S TURN
+# TROLL'S TURN
         print("The troll strikes!")
         hp_char -= dmg_troll
 
-        #Fight ends check
+        # Fight ends check
         if hp_troll <= 0:
             print("You slaughtered a troll in its home, congrats!")
             break
@@ -184,48 +191,48 @@ def trollEncounter():
 
 
 '''MAIN PROGRAM'''
-#Variables
+# Variables
 tunnel_1 = False
 tunnel_2 = False
 tunnel_3 = False
 end = False
 import time
 
-#--Character stats--
+# --Character stats--
 hp_char = 10
 dmg_char = 2
 heavy_dmg_char = 5
 
-#Goblin stats
+# Goblin stats
 hp_goblin = 5
 dmg_goblin = 1
 
-#Troll stats
+# Troll stats
 hp_troll = 10
 dmg_troll = 3
 
 
 
 while True:
-#PHASE 1
+# PHASE 1
     print("You travel through the forest and come across a cave! What do you do?\n\
     a - You go inside\n\
     b - Your tummy hurts so you leave\n")
 
     findCave_choice = input("")
-    #Error check.
+    # Error check before option a/b.
     if len(findCave_choice) == 1 and findCave_choice.isalpha() == True:
         if findCave_choice == 'a':
             print("You man up and go into the cave...")
         elif findCave_choice == 'b':
             print("You tuck your tail between your legs and go home...")
             break
-    #Error check.
+    # Error check.
     else:
         print("Choose an actual choice!")
 
 
-#PHASE 2
+# PHASE 2
     print("You travel deep into the cave, and come across a tunnel that splits into 3!\n\
 a - You go for the first tunnel\n\
 b - You go for the middle tunnel\n\
@@ -250,39 +257,44 @@ d - You chicken out and head for the exit\n")
         print("Choose an actual choice!")
 
 
-    #PHASE 2 - FIRST TUNNEL
+    # PHASE 2 - FIRST TUNNEL
     if tunnel_1 == True:
-        print("You walked for hours and hours...")
+        print("You walked for hours and hours...\n")
         time.sleep(3)
-    #PHASE 2 - MIDDLE TUNNEL
+    # PHASE 2 - MIDDLE TUNNEL
     elif tunnel_2 == True:
-        print("You travel for a little while, until suddenly...")
+        print("You travel for a little while, until suddenly...\n")
+        time.sleep(3)
         goblinEncounter()
         time.sleep(3)
-    #PHASE 2 - LAST TUNNEL
+    # PHASE 2 - LAST TUNNEL
     elif tunnel_3 == True:
-        print("You travel for a little while, until suddenly...")
+        print("You travel for a little while, until suddenly...\n")
+        time.sleep(3)
         trapEncounter()
         time.sleep(3)
         
 
-    #If you succumbed to a fight
+    # If you succumbed to a fight
     if end == True:
         break
 
 
-#PHASE 3
+# PHASE 3
     print("\nYou continuously walk until you see light in the distance.\n\
 You keep walking until...\n")
     time.sleep(3)
     trollEncounter()
 
-    #If you succumbed to a fight
+    # If you succumbed to a fight
     if end == True:
         break
-    #If you win.
+    # If you win.
     else:
-        print("Congrats! You found a large box of treasure! The End")
+        print("And it seems you struck the jackpot! You found a large box of treasure! \n\nThe End")
+        time.sleep(3)
+        print("\nEnding program...")
+        time.sleep(3)
         break
 
 
